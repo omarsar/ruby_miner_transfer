@@ -1,6 +1,10 @@
 #gems (Note: could not use Gem/s as model name, it is already reserved)
 class Gemas < ActiveRecord::Base
 	self.table_name = "gems"
+	has_many :questions
+	has_many :questions_word_count
+	has_many :vers
+	has_many :commits
 end
 
 #issues
@@ -11,11 +15,13 @@ end
 #questions
 class Question < ActiveRecord::Base
 	self.table_name = "questions"
+	belongs_to :gems
 end
 
 #question_word_count
-class Question_Word_Count < ActiveRecord::Base
+class QuestionsWordCount < ActiveRecord::Base
 	self.table_name = "questions_word_count"
+	belongs_to :gems
 end
 
 #readme_word_count
@@ -24,13 +30,21 @@ class Readme < ActiveRecord::Base
 end
 
 #versions
-class Version < ActiveRecord::Base
-	self.table_name = "versions"
+class Ver < ActiveRecord::Base
+	self.table_name = "vers"
+	belongs_to :gems
+end
+
+#downloads
+class Download < ActiveRecord::Base
+	self.table_name = "downloads"
+	
 end
 
 #commits
 class Commit < ActiveRecord::Base
 	self.table_name = "commits"
+	belongs_to :gems
 end
 
 #contributors
@@ -44,19 +58,15 @@ class Dependency < ActiveRecord::Base
 end
 
 #dependencies_development
-class Dependency_Development < ActiveRecord::Base
-	self.table_name = "dependencies_developmentn"
+class DependencyDevelopment < ActiveRecord::Base
+	self.table_name = "dependencies_development"
 end
 
 #dependencies_runtime
-class Dependency_Runtime < ActiveRecord::Base
+class DependencyRuntime < ActiveRecord::Base
 	self.table_name = "dependencies_runtime"
 end
 
-#downloads
-class Download < ActiveRecord::Base
-	self.table_name = "downloads"
-end
 
 
 
