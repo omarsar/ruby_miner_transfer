@@ -1,14 +1,13 @@
+#User Sinatra for in case there is a need for a web app
 require 'sinatra' 
 require 'sinatra/activerecord'
-
-
-class Gemas < ActiveRecord::Base
-	self.table_name = "gems"
-end
+require './config/models'
 
 
 @gems = Gemas.all()
 
-puts (@gems)
+@gems.each do |t|
+	puts t.name
+end
 
 puts "We have reached the end of app!!!"
