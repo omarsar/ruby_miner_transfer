@@ -1,9 +1,9 @@
-#gems (Note: could not use Gem/s as model name, it is already reserved)
-class Gemas < ActiveRecord::Base
+
+class Gems < ActiveRecord::Base
 	self.table_name = "gems"
 	has_many :questions
 	has_many :questions_word_count
-	has_many :vers
+	has_many :versions
 	has_many :commits
 end
 
@@ -30,15 +30,15 @@ class Readme < ActiveRecord::Base
 end
 
 #versions
-class Ver < ActiveRecord::Base
-	self.table_name = "vers"
+class Version < ActiveRecord::Base
+	self.table_name = "versions"
 	belongs_to :gems
+	has_many :downloads
 end
 
 #downloads
 class Download < ActiveRecord::Base
 	self.table_name = "downloads"
-	
 end
 
 #commits
