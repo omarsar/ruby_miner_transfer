@@ -196,14 +196,13 @@ def insert_one(doc)
 		ranking: doc['ranking'],
 		total_downloads: doc['total_downloads'])
 	
-	#Note: Here I can do bulk insert (1000 limit)
-	#insert_question(doc['questions'], @gem)
-	#insert_questions_word_count(doc['questions_word_count'], @gem)
-	#insert_versions(doc['version_downloads'], doc['version_downloads_days'], @gem)
-	#insert_commits(doc['commit_activity_last_year'], @gem)
-	#insert_issues(doc['issues_info'], @gem)
-	#insert_readme(doc['readme_word_count'], @gem)
-	#insert_contributors(doc['contributors'], @gem)
+	insert_question(doc['questions'], @gem)
+	insert_questions_word_count(doc['questions_word_count'], @gem)
+	insert_versions(doc['version_downloads'], doc['version_downloads_days'], @gem)
+	insert_commits(doc['commit_activity_last_year'], @gem)
+	insert_issues(doc['issues_info'], @gem)
+	insert_readme(doc['readme_word_count'], @gem)
+	insert_contributors(doc['contributors'], @gem)
 	insert_development_dependencies(doc['dependencies']['development'], @gem)
 	insert_runtime_dependencies(doc['dependencies']['runtime'], @gem)
 end
@@ -216,5 +215,7 @@ end
 
 doc = documents[92]
 insert_one(doc)
+
+#Note: It takes approx. two minutes per gem.
 
 puts "We have reached the end of insertion!!!"
