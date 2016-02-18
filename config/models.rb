@@ -5,11 +5,16 @@ class Gems < ActiveRecord::Base
 	has_many :questions_word_count
 	has_many :versions
 	has_many :commits
+	has_many :issues
+	has_many :readme_word_count
+	has_many :contributors
+	has_many :depends
 end
 
 #issues
 class Issue < ActiveRecord::Base
 	self.table_name = "issues"
+	belongs_to :gems
 end
 
 #questions
@@ -25,8 +30,9 @@ class QuestionsWordCount < ActiveRecord::Base
 end
 
 #readme_word_count
-class Readme < ActiveRecord::Base
+class ReadmeWordCount < ActiveRecord::Base
 	self.table_name = "readme_word_count"
+	belongs_to :gems
 end
 
 #versions
@@ -39,22 +45,32 @@ end
 #downloads
 class Download < ActiveRecord::Base
 	self.table_name = "downloads"
+	belongs_to :versions
 end
 
 #commits
 class Commit < ActiveRecord::Base
 	self.table_name = "commits"
 	belongs_to :gems
+	has_many :commit_days
+end
+
+#commit_days
+class CommitDay < ActiveRecord::Base
+	self.table_name = "commit_days"
+	belongs_to :comits
 end
 
 #contributors
 class Contributor < ActiveRecord::Base
 	self.table_name = "contributors"
+	belongs_to :gems
 end
 
 #dependencies
-class Dependency < ActiveRecord::Base
-	self.table_name = "dependencies"
+class Depend < ActiveRecord::Base
+	self.table_name = "depends"
+	belongs_to :gems
 end
 
 #dependencies_development

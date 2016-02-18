@@ -15,10 +15,13 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    bson (4.0.1)
     builder (3.2.2)
     i18n (0.7.0)
     json (1.8.3)
     minitest (5.8.4)
+    mongo (2.2.2)
+      bson (~> 4.0)
     pg (0.18.4)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -41,6 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  mongo (~> 2.1)
   pg
   rake
   sinatra-activerecord

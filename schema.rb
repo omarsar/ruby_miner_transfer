@@ -31,7 +31,7 @@ ActiveRecord::Schema.define do
 
 	#separate table to capture the downloads for each day of the week
 	create_table "commit_days" do |t|
-		t.integer "commits_id"
+		t.integer "commit_id"
 		t.string "week_index"
 		t.integer "day_index" #preferable in integer for better querying
 		t.integer "daily_commits"
@@ -39,11 +39,10 @@ ActiveRecord::Schema.define do
 
 
 	#Table: Dependency (dependencies)
-	create_table "dependencies" do |t|
-		t.integer "gems_id"
-		t.integer "dependency_id"		
+	create_table "depends" do |t|
+		t.integer "gems_id"		
 		#consider the extra two tables or just introduce a type column
-		t.string "type"
+		t.string "category"
 		t.string "name"
 		t.string "requirements"
 	end
@@ -96,7 +95,7 @@ ActiveRecord::Schema.define do
 	#Table: Contributor
 	#Optimization issues: There will be repeated rows of contributors name if
 	#these contributors are part of other gem contributers pool.
-	create_table "contibutors" do |t|
+	create_table "contributors" do |t|
 		t.integer "gems_id"
 		t.integer "contributions"
 		t.string "name"
@@ -111,7 +110,7 @@ ActiveRecord::Schema.define do
 
 	#Table: Download (version_downloads_days)
 	create_table "downloads" do |t|
-		t.integer "versions_id"
+		t.integer "version_id"
 		t.datetime "download_date"
 		t.string "version_num"
 		t.integer "day_index" #more query friendly for ranges involving days
