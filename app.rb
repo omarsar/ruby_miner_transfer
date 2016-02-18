@@ -216,6 +216,9 @@ end
 doc = documents[92]
 insert_one(doc)
 
+#batch writing here is important
+
+
 #Note: It takes approx. two minutes per gem.
 
 puts "We have reached the end of insertion!!!"

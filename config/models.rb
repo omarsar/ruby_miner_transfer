@@ -73,18 +73,6 @@ class Depend < ActiveRecord::Base
 	belongs_to :gems
 end
 
-#dependencies_development
-class DependencyDevelopment < ActiveRecord::Base
-	self.table_name = "dependencies_development"
-end
-
-#dependencies_runtime
-class DependencyRuntime < ActiveRecord::Base
-	self.table_name = "dependencies_runtime"
-end
-
-
-
 
 
 
